@@ -1,0 +1,237 @@
+import type { MouseEventHandler } from 'react';
+import { useRef } from 'react';
+import { Typography, Tag } from 'antd';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import './Experience.css';
+
+const { Title, Paragraph } = Typography;
+
+interface ExperienceItem {
+    company: string;
+    position: string;
+    period: string;
+    description: string;
+    achievements: string[];
+    tags: string[];
+    media?: {
+        src: string;
+        alt?: string;
+    };
+}
+
+const experiences: ExperienceItem[] = [
+    {
+        company: '湖南九典制药股份有限公司',
+        position: 'AI 应用开发工程师',
+        period: '2023 – 至今',
+        description: '负责公司 AI 应用的设计与开发，推动智能化转型升级。',
+        achievements: [
+            '主导开发智能问答系统，基于大模型技术实现药品知识库的智能检索',
+            '构建深度学习模型用于生产数据分析，提升质量控制效率',
+            '设计并实现 AI 应用架构，支持多场景业务需求',
+        ],
+        tags: ['LLM', 'Deep Learning', 'Python', 'RAG'],
+        media: { src: '/mock/exp-jiudian.svg', alt: 'Pharma AI application' },
+    },
+    {
+        company: 'AI 产品孵化 / 开源协作（Mock）',
+        position: 'Full‑Stack / LLM Engineer',
+        period: '2022 – 2023',
+        description: '围绕 LLM/RAG 做多个小型产品验证，打磨从 0 到 1 的交付闭环。',
+        achievements: [
+            '将 RAG 与 UI 体验结合：结构化回答、来源引用、错误提示更"产品化"',
+            '沉淀可复用组件：Prompt 模板、评估脚本、数据处理工具链',
+            '与设计/业务协作迭代，提升从需求到上线的节奏与质量',
+        ],
+        tags: ['RAG', 'React', 'FastAPI', 'Evaluation'],
+        media: { src: '/mock/project-rag-search.svg', alt: 'RAG product mock' },
+    },
+    {
+        company: '自由职业 / 个人项目（Mock）',
+        position: 'Frontend Engineer',
+        period: '2021 – 2022',
+        description: '专注交互与体验：微动效、信息层级与可访问性，让产品"更像产品"。',
+        achievements: [
+            '建立统一动效规范（ease/duration/stagger），提升全站一致性',
+            '实现滚动叙事与可交互展示模块，增强作品展示张力',
+            '关注 reduced-motion 等可访问性，降低眩晕与干扰',
+        ],
+        tags: ['UX', 'Motion', 'Accessibility', 'Design System'],
+        media: { src: '/mock/project-portfolio-motion.svg', alt: 'UI motion system mock' },
+    },
+];
+
+const setSpotlightPosition: MouseEventHandler<HTMLElement> = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+};
+
+const clearSpotlightPosition: MouseEventHandler<HTMLElement> = (e) => {
+    const card = e.currentTarget;
+    card.style.removeProperty('--spotlight-x');
+    card.style.removeProperty('--spotlight-y');
+};
+
+const ExperienceShowcase = ({ exp }: { exp: ExperienceItem }) => {
+    return (
+        <article
+            className="experience-showcase"
+            onMouseMove={setSpotlightPosition}
+            onMouseLeave={clearSpotlightPosition}
+        >
+            <div className="experience-showcase-grid">
+                <div className="experience-showcase-content">
+                    <div className="experience-header">
+                        <div className="experience-info">
+                            <h3 className="experience-company">{exp.company}</h3>
+                            <span className="experience-position">{exp.position}</span>
+                        </div>
+                        <span className="experience-period">{exp.period}</span>
+                    </div>
+
+                    <Paragraph className="experience-description">
+                        {exp.description}
+                    </Paragraph>
+
+                    <ul className="experience-achievements">
+                        {exp.achievements.map((achievement) => (
+                            <li key={achievement}>{achievement}</li>
+                        ))}
+                    </ul>
+
+                    <div className="experience-tags">
+                        {exp.tags.map((tag) => (
+                            <Tag key={tag} className="experience-tag">
+                                {tag}
+                            </Tag>
+                        ))}
+                    </div>
+                </div>
+
+                {exp.media && (
+                    <div className="experience-showcase-media">
+                        <div className="experience-media-lg">
+                            <img
+                                src={exp.media.src}
+                                alt={exp.media.alt ?? `${exp.company} preview`}
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                )}
+            </div>
+        </article>
+    );
+};
+
+// Card with fade in/out transitions
+const ExperienceCard = ({
+    exp,
+    index,
+    total,
+    scrollYProgress
+}: {
+    exp: ExperienceItem;
+    index: number;
+    total: number;
+    scrollYProgress: any;
+}) => {
+    const step = 1 / total;
+
+    // This card's active range
+    const activeStart = index * step;
+    const activeEnd = (index + 1) * step;
+
+    // Slide from right
+    const x = useTransform(
+        scrollYProgress,
+        [activeStart, activeStart + step * 0.3],
+        ['100%', '0%']
+    );
+
+    // Fade in when entering, fade out when next card comes
+    const opacity = useTransform(
+        scrollYProgress,
+        [
+            activeStart,
+            activeStart + step * 0.3,
+            activeEnd - step * 0.3,
+            activeEnd
+        ],
+        [0, 1, 1, 0]
+    );
+
+    const isFirst = index === 0;
+    const isLast = index === total - 1;
+
+    // First card: visible at start, fades out when second comes
+    const firstOpacity = useTransform(
+        scrollYProgress,
+        [0, step * 0.7, step],
+        [1, 1, 0]
+    );
+
+    // Last card: doesn't fade out
+    const lastOpacity = useTransform(
+        scrollYProgress,
+        [activeStart, activeStart + step * 0.3],
+        [0, 1]
+    );
+
+    return (
+        <motion.div
+            className="exp-stack-card"
+            style={{
+                zIndex: index + 1,
+                x: isFirst ? 0 : x,
+                opacity: isFirst ? firstOpacity : (isLast ? lastOpacity : opacity),
+            }}
+        >
+            <ExperienceShowcase exp={exp} />
+        </motion.div>
+    );
+};
+
+const Experience = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ['start start', 'end end']
+    });
+
+    return (
+        <section id="experience" className="experience section">
+            <div className="experience-header-section">
+                <span className="section-label">工作经历</span>
+                <Title level={2} className="section-title">
+                    我的职业轨迹
+                </Title>
+            </div>
+
+            <div
+                ref={containerRef}
+                className="experience-scroll-container"
+                style={{ height: `${experiences.length * 100}vh` }}
+            >
+                <div className="experience-sticky-viewport">
+                    <div className="experience-cards-wrapper">
+                        {experiences.map((exp, index) => (
+                            <ExperienceCard
+                                key={exp.company}
+                                exp={exp}
+                                index={index}
+                                total={experiences.length}
+                                scrollYProgress={scrollYProgress}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Experience;

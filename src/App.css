@@ -1,0 +1,44 @@
+/* 全局背景优化 */
+body {
+  background-color: #fafafa;
+  background-image:
+    radial-gradient(900px circle at 8% -10%, rgba(67, 56, 202, 0.10) 0%, transparent 60%),
+    radial-gradient(900px circle at 92% 10%, rgba(0, 0, 0, 0.06) 0%, transparent 60%),
+    radial-gradient(900px circle at 50% 120%, rgba(67, 56, 202, 0.08) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+}
+
+.app-layout {
+  min-height: 100vh;
+  background: transparent !important;
+  /* 让 body 的噪点透出来 */
+}
+
+/* 优化字体渲染 */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis 平滑滚动必需样式 */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

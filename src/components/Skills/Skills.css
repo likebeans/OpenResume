@@ -1,0 +1,120 @@
+.skills-section-modern {
+    padding: 120px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.skills-layout {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.skills-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px;
+}
+
+.skill-column {
+    position: relative;
+}
+
+/* 列头 */
+.column-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.column-icon {
+    font-size: 24px;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    background: rgba(0, 0, 0, 0.03);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.column-desc {
+    font-size: 0.875rem;
+    color: var(--color-tertiary);
+    margin: 0;
+}
+
+/* 列表 */
+.skill-list-modern {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.skill-item-modern {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--color-secondary);
+    font-weight: 500;
+    transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.skill-item-modern:hover {
+    transform: translateX(4px);
+    color: var(--color-primary);
+}
+
+.skill-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #e5e7eb;
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: background-color var(--transition-fast);
+}
+
+.skill-item-modern:hover .skill-dot {
+    background-color: var(--color-primary);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .skills-section-modern {
+        padding: 90px 0;
+    }
+
+    .skills-columns {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .skills-header {
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    .column-header {
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+    }
+
+    .skill-item-modern {
+        font-size: 0.95rem;
+    }
+}

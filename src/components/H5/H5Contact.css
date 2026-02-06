@@ -1,0 +1,117 @@
+.h5-contact {
+  background: #fff;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.h5-contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #16a34a;
+  margin-bottom: 20px;
+}
+
+.h5-contact-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  font-style: italic;
+  line-height: 1.2 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 16px !important;
+}
+
+.h5-text-gold {
+  color: #d4a574;
+}
+
+.h5-contact-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.h5-contact-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), #7c3aed);
+  margin: 0 auto 24px;
+  border-radius: 1px;
+}
+
+.h5-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.h5-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.h5-contact-link:active {
+  background: #f0f0f0;
+  transform: scale(0.98);
+}
+
+.h5-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 20px;
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.h5-link-info {
+  flex: 1;
+}
+
+.h5-link-label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.h5-link-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.h5-link-arrow {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.h5-contact-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.h5-contact-footer p {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}

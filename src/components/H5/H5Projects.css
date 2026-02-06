@@ -1,0 +1,76 @@
+.h5-projects {
+  background: #fff;
+}
+
+.h5-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.h5-project-card {
+  display: block;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.h5-project-card:active {
+  transform: scale(0.98);
+  background: #f0f0f0;
+}
+
+.h5-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.h5-project-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.h5-project-arrow {
+  font-size: 14px;
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.h5-project-card:active .h5-project-arrow {
+  transform: translateX(4px);
+  color: var(--color-primary);
+}
+
+.h5-project-role {
+  font-size: 12px;
+  color: var(--color-primary);
+  margin: 0 0 8px 0;
+}
+
+.h5-project-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.h5-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.h5-project-tag {
+  padding: 2px 10px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  background: #fff !important;
+  border: 1px solid #e5e5e5 !important;
+  color: #666 !important;
+}

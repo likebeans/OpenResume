@@ -1,23 +1,35 @@
 import { useState, useEffect } from 'react';
 import { Layout, Button, Drawer } from 'antd';
-import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
+import { MenuOutlined, CloseOutlined, TranslationOutlined } from '@ant-design/icons';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from '../MagneticButton';
 import { transitions } from '../../theme/motion';
+import { useLang } from '../../context/LanguageContext';
 import './Header.css';
 
 const { Header: AntHeader } = Layout;
 
-const navItems = [
-    { key: 'about', label: '关于' },
-    { key: 'experience', label: '经历' },
-    { key: 'projects', label: '项目' },
-    { key: 'skills', label: '技能' },
-    { key: 'contact', label: '联系' },
-];
+const navItemsMap = {
+    zh: [
+        { key: 'about', label: '关于' },
+        { key: 'experience', label: '经历' },
+        { key: 'projects', label: '项目' },
+        { key: 'skills', label: '技能' },
+        { key: 'contact', label: '联系' },
+    ],
+    en: [
+        { key: 'about', label: 'About' },
+        { key: 'experience', label: 'Experience' },
+        { key: 'projects', label: 'Projects' },
+        { key: 'skills', label: 'Skills' },
+        { key: 'contact', label: 'Contact' },
+    ],
+};
 
 const Header = () => {
+    const { lang, toggleLang } = useLang();
     const [isScrolled, setIsScrolled] = useState(false);
+    const navItems = navItemsMap[lang];
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
 
@@ -76,7 +88,7 @@ const Header = () => {
                         whileTap={{ scale: 0.95 }}
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
-                        <span className="logo-text">YF</span>
+                        <span className="logo-text">余非凡</span>
                         <span className="logo-dot"></span>
                     </motion.div>
 
@@ -109,13 +121,24 @@ const Header = () => {
                         ))}
                     </nav>
 
-                    {/* Mobile Menu Button */}
-                    <Button
-                        className="mobile-menu-btn"
-                        type="text"
-                        icon={mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    />
+                    <div className="header-right">
+                        <Button
+                            className="lang-toggle-btn"
+                            type="text"
+                            icon={<TranslationOutlined />}
+                            onClick={toggleLang}
+                        >
+                            {lang === 'zh' ? 'EN' : '中'}
+                        </Button>
+
+                        {/* Mobile Menu Button */}
+                        <Button
+                            className="mobile-menu-btn"
+                            type="text"
+                            icon={mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        />
+                    </div>
                 </div>
             </AntHeader>
 

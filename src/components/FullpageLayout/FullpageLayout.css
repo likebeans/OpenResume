@@ -1,0 +1,159 @@
+/* ============================================
+   Fullpage Layout System
+   ============================================ */
+
+.fullpage-container {
+  position: relative;
+}
+
+.fullpage-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.fullpage-section.dark {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.fullpage-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  will-change: transform, opacity;
+}
+
+/* First section (Hero) doesn't need slide animation */
+.fullpage-section:first-child {
+  transform: none !important;
+}
+
+.fullpage-section:first-child .fullpage-content {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Section divider line */
+.fullpage-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.fullpage-section:first-child::before {
+  display: none;
+}
+
+.fullpage-section.dark::before {
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* ============================================
+   Compact Section Header (inline with content)
+   ============================================ */
+
+.section-header-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.section-header-inline .section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.section-header-inline .section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0 !important;
+  line-height: 1.2;
+}
+
+.fullpage-section.dark .section-header-inline .section-label {
+  color: #d4af37;
+}
+
+.fullpage-section.dark .section-header-inline .section-title {
+  color: #ffffff;
+}
+
+/* ============================================
+   Compact Grid Layouts
+   ============================================ */
+
+.compact-grid {
+  display: grid;
+  gap: 32px;
+}
+
+.compact-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.compact-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.compact-grid-sidebar {
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+}
+
+.compact-grid-content {
+  grid-template-columns: 1fr 400px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .fullpage-content {
+    padding: 32px 24px;
+  }
+
+  .compact-grid-2,
+  .compact-grid-3,
+  .compact-grid-sidebar,
+  .compact-grid-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .section-header-inline {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .fullpage-content {
+    padding: 24px 16px;
+  }
+}

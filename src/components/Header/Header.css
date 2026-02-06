@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 /* Logo */
@@ -47,10 +48,10 @@
 }
 
 .logo-text {
-    font-size: var(--text-2xl);
-    font-weight: 800;
+    font-size: var(--text-lg);
+    font-weight: 700;
     color: var(--color-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
 }
 
 .logo-dot {
@@ -63,6 +64,9 @@
 
 /* Desktop Navigation */
 .nav-desktop {
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: var(--space-1);
@@ -95,6 +99,33 @@
     height: 2px;
     background: var(--color-primary);
     border-radius: 1px;
+}
+
+/* Header Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang-toggle-btn {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--color-secondary) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 100px !important;
+    padding: 4px 14px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    transition: all 0.3s !important;
+}
+
+.lang-toggle-btn:hover {
+    color: var(--color-primary) !important;
+    border-color: rgba(67, 56, 202, 0.3) !important;
+    background: rgba(67, 56, 202, 0.04) !important;
 }
 
 /* Mobile Menu Button */

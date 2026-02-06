@@ -2,32 +2,36 @@ import { Typography } from 'antd';
 import { motion } from 'framer-motion';
 import { CodeOutlined, CloudServerOutlined, ToolOutlined } from '@ant-design/icons';
 import { createRevealFastProps, createRevealProps } from '../../theme/motion';
+import { useLang } from '../../context/LanguageContext';
 import './Skills.css';
 
 const { Title } = Typography;
 
-const skillsData = [
+const getSkillsData = (t: (zh: string, en: string) => string) => [
     {
         category: 'AI Engineering',
         icon: <CodeOutlined />,
-        desc: '构建智能核心',
+        desc: t('构建智能核心', 'Building intelligent core'),
         items: ['Large Language Models', 'RAG Architecture', 'LangChain', 'Prompt Engineering', 'Model Fine-tuning']
     },
     {
         category: 'Full Stack',
         icon: <CloudServerOutlined />,
-        desc: '打造坚实底座',
+        desc: t('打造坚实底座', 'Solid foundation'),
         items: ['Python / PyTorch', 'FastAPI / Flask', 'React / TypeScript', 'PostgreSQL / Vector DB']
     },
     {
         category: 'DevOps & Tools',
         icon: <ToolOutlined />,
-        desc: '提效与部署',
+        desc: t('提效与部署', 'Efficiency & deployment'),
         items: ['Docker / K8s', 'Git Workflow', 'Linux / Shell', 'CI/CD Pipeline']
     },
 ];
 
 const Skills = () => {
+    const { t } = useLang();
+    const skillsData = getSkillsData(t);
+
     return (
         <section id="skills" className="skills-section-modern">
             <div className="container">

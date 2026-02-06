@@ -5,11 +5,13 @@ import { motion } from 'framer-motion';
 import MagneticButton from '../MagneticButton';
 import { fadeUpVariants, staggerContainer, transitions } from '../../theme/motion';
 import profilePhoto from '../../assets/证件照.jpg';
+import { useLang } from '../../context/LanguageContext';
 import './Hero.css';
 
 const { Title, Paragraph } = Typography;
 
 const Hero = () => {
+    const { t } = useLang();
     const [photoVisible, setPhotoVisible] = useState(false);
     const containerVariants = staggerContainer(0.2, 0.08);
     const itemVariants = fadeUpVariants;
@@ -18,29 +20,36 @@ const Hero = () => {
     const handleDownloadResume = () => {
         const link = document.createElement('a');
         link.href = '/resume.pdf';
-        link.download = '余非凡的简历.pdf';
+        link.download = t('余非凡的简历.pdf', 'Resume_YuFeifan.pdf');
         link.click();
     };
 
-    const techStack = ['LLM', 'RAG', 'Agent', 'Python', 'React', 'FastAPI'];
+    const techStack = [
+        { name: 'LLM', highlight: true },
+        { name: 'RAG', highlight: true },
+        { name: 'Agent', highlight: true },
+        { name: 'RLHF', highlight: true },
+        { name: 'Python', highlight: false },
+        { name: 'PyTorch', highlight: false },
+    ];
 
     const blogStats = [
-        { label: '原创', value: '350+' },
-        { label: '阅读量', value: '42万+' },
-        { label: '粉丝', value: '2.6k+' },
-        { label: '浏览量', value: '105万+' },
+        { label: t('原创', 'Original'), value: '350+' },
+        { label: t('阅读量', 'Reads'), value: '42万+' },
+        { label: t('粉丝', 'Followers'), value: '2.6k+' },
+        { label: t('浏览量', 'Views'), value: '105万+' },
     ];
 
     const projects = [
         {
             name: 'Notes on LLMs',
-            desc: '大模型学习笔记与实践总结，涵盖核心原理与工程经验',
+            desc: t('大模型学习笔记与实践总结，涵盖核心原理与工程经验', 'LLM study notes and practice, covering core principles and engineering experience'),
             url: 'https://likebeans.github.io/notes-on-llms/',
             tags: ['LLM', 'Learning'],
         },
         {
             name: 'Genesis-LLM',
-            desc: '从零手搓大语言模型，深入理解 Transformer 架构',
+            desc: t('从零手搓大语言模型，深入理解 Transformer 架构', 'Building an LLM from scratch to deeply understand the Transformer architecture'),
             url: 'https://github.com/likebeans/Genesis-LLM',
             tags: ['LLM', 'Transformer'],
         },
@@ -67,7 +76,7 @@ const Hero = () => {
                                 Large Language Models.
                             </Title>
                             <Paragraph className="hero-subtitle">
-                                用算法思考，用工程交付，用 AI 改变世界
+                                {t('用算法思考，用工程交付，用 AI 改变世界', 'Think with algorithms, deliver with engineering, change the world with AI')}
                             </Paragraph>
                         </motion.div>
 
@@ -80,22 +89,24 @@ const Hero = () => {
                                     </div>
                                     <div className="profile-basic">
                                         <Title level={4} className="profile-name">余非凡</Title>
-                                        <Paragraph className="profile-role">大模型算法工程师 · 1年+ AI 开发经验</Paragraph>
+                                        <Paragraph className="profile-role">{t('大模型算法工程师 · 1年+ AI 开发经验', 'LLM Algorithm Engineer · 1+ Year AI Dev Experience')}</Paragraph>
                                     </div>
                                 </div>
                                 <Paragraph className="profile-desc">
-                                    专注于大语言模型落地应用，擅长 RAG、Agent 系统设计与工程化实践。
-                                    主导过多个企业级 AI 项目从0到1的落地，具备全栈开发能力。
+                                    {t(
+                                        '专注于大语言模型落地应用，擅长 RAG、Agent 系统设计与工程化实践。主导过多个企业级 AI 项目从0到1的落地，具备全栈开发能力。熟练掌握继续预训练、模型微调、RLHF、知识蒸馏、训练数据处理及 Benchmark 评估。',
+                                        'Focused on LLM application development, skilled in RAG & Agent system design and engineering. Led multiple enterprise AI projects from 0 to 1 with full-stack capability. Proficient in continual pre-training, fine-tuning, RLHF, knowledge distillation, training data processing, and benchmark evaluation.'
+                                    )}
                                 </Paragraph>
                                 <div className="profile-tags">
                                     {techStack.map(tag => (
-                                        <Tag key={tag} className="tech-tag">{tag}</Tag>
+                                        <Tag key={tag.name} className={`tech-tag ${tag.highlight ? 'highlight' : ''}`}>{tag.name}</Tag>
                                     ))}
                                 </div>
                                 <div className="profile-actions">
                                     <MagneticButton>
                                         <Button type="primary" size="large" icon={<DownloadOutlined />} onClick={handleDownloadResume}>
-                                            下载简历
+                                            {t('下载简历', 'Resume')}
                                         </Button>
                                     </MagneticButton>
                                     <MagneticButton>
@@ -113,9 +124,9 @@ const Hero = () => {
                         {/* 开源项目列表 */}
                         <motion.div className="showcase-section projects-section" variants={itemVariants} transition={itemTransition}>
                             <div className="section-header">
-                                <Title level={5} className="section-title">开源项目</Title>
+                                <Title level={5} className="section-title">{t('开源项目', 'Open Source')}</Title>
                                 <a href="https://github.com/likebeans" target="_blank" rel="noopener noreferrer" className="section-link">
-                                    查看全部 <ArrowRightOutlined />
+                                    {t('查看全部', 'View All')} <ArrowRightOutlined />
                                 </a>
                             </div>
                             <div className="projects-grid">
@@ -157,11 +168,11 @@ const Hero = () => {
                                     <img src={profilePhoto} alt="余非凡" />
                                 </div>
                                 <div className="blog-info">
-                                    <span className="blog-name">余非凡 · 各大社区优秀原创作者</span>
-                                    <span className="blog-desc">持续输出 AI 算法原理和落地与工程实践</span>
+                                    <span className="blog-name">{t('余非凡 · 各大社区优秀原创作者', 'Yu Feifan · Outstanding Original Creator')}</span>
+                                    <span className="blog-desc">{t('持续输出 AI 算法原理和落地与工程实践', 'Sharing AI algorithm insights and engineering practices')}</span>
                                 </div>
                                 <div className="blog-cta">
-                                    查看主页 <ArrowRightOutlined className="blog-arrow" />
+                                    {t('查看主页', 'View Blog')} <ArrowRightOutlined className="blog-arrow" />
                                 </div>
                             </div>
                             <div className="blog-stats">

@@ -42,3 +42,35 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* ============================================
+   Cinematic Mode Body Styles
+   ============================================ */
+body.cinematic-mode {
+  background: #0a0a0a !important;
+  background-image: none !important;
+}
+
+body.cinematic-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 0% 0%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Snap Mode Body */
+body.snap-mode {
+  overflow: hidden;
+}
+
+/* Fullpage Mode Body */
+body.fullpage-mode section {
+  scroll-margin-top: 80px;
+}

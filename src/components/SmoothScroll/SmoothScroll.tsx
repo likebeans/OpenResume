@@ -1,20 +1,18 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import useMediaQuery from '../../hooks/useMediaQuery';
 import usePrefersReducedMotion from '../../hooks/usePrefersReducedMotion';
 
 const SmoothScroll = () => {
     const prefersReducedMotion = usePrefersReducedMotion();
-    const isTouchDevice = useMediaQuery('(pointer: coarse)');
 
     useEffect(() => {
-        if (prefersReducedMotion || isTouchDevice) {
+        if (prefersReducedMotion) {
             return;
         }
 
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            duration: 0.8,
+            easing: (t) => 1 - Math.pow(1 - t, 3),
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
@@ -34,7 +32,7 @@ const SmoothScroll = () => {
             cancelAnimationFrame(rafId);
             lenis.destroy();
         };
-    }, [prefersReducedMotion, isTouchDevice]);
+    }, [prefersReducedMotion]);
 
     return null;
 };

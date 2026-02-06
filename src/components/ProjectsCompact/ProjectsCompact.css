@@ -1,0 +1,307 @@
+/* Override FullpageSection overflow to allow sticky positioning */
+.fullpage-section.projects-compact {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100vh;
+}
+
+/* Fix sticky context */
+.fullpage-section.projects-compact .fullpage-content {
+  overflow: visible !important;
+  will-change: auto !important;
+  transform: none !important;
+  padding: 0; /* Remove padding to allow full width cards if needed */
+  max-width: 100%; /* Allow full width */
+}
+
+.projects-compact .projects-wrapper {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Static Header */
+.projects-compact .projects-header-static {
+  margin-bottom: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 20px;
+}
+
+.projects-compact .section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.projects-compact .section-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem) !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+}
+
+/* Stacking Cards Container */
+.projects-compact .projects-stack-container {
+  position: relative;
+  /* Add padding bottom to allow space for the last card to be fully viewed before next section */
+  padding-bottom: 10vh; 
+}
+
+/* Individual Card Container (scroll space) */
+.projects-compact .project-card-container {
+  height: 100vh; /* Each card takes up a full viewport height of scroll space */
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center; /* Center card vertically */
+  justify-content: center;
+}
+
+/* Sticky Card (Visual Element) */
+.projects-compact .project-card-sticky {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa; /* Match section background to cover previous cards */
+  /* Ensure it has a solid background to cover elements behind it */
+  position: relative;
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
+  padding: 20px 0;
+  /* Ensure stacking context */
+  z-index: 1;
+}
+
+.projects-compact .project-card-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  background: #fff;
+  padding: 60px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.04);
+  width: 100%;
+  max-height: 90vh; /* Prevent overflowing viewport */
+  overflow-y: auto; /* Allow internal scrolling if content is too tall */
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: none; 
+}
+
+.projects-compact .project-card-inner::-webkit-scrollbar {
+  display: none;
+}
+
+/* Left Column */
+.projects-compact .project-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.projects-compact .project-header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.projects-compact .project-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projects-compact .project-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.projects-compact .project-title a {
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.2s;
+}
+
+.projects-compact .project-title a:hover {
+  color: var(--color-primary);
+}
+
+.projects-compact .arrow-icon {
+  font-size: 1.4rem;
+  transform: rotate(-45deg);
+  transition: transform 0.2s;
+  opacity: 0.4;
+}
+
+.projects-compact .project-title a:hover .arrow-icon {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.projects-compact .project-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.projects-compact .project-desc {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 90%;
+}
+
+.projects-compact .project-achievements {
+  margin: 16px 0 0 0;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.projects-compact .project-achievements li {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.projects-compact .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.projects-compact .tag {
+  font-size: 12px;
+  color: #666;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Right Column */
+.projects-compact .project-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.projects-compact .takeaway-box {
+  background: #f8f9fa;
+  padding: 40px;
+  border-radius: 20px;
+  border-left: 4px solid var(--color-primary);
+  position: relative;
+}
+
+/* Quote styling decoration */
+.projects-compact .takeaway-box::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 60px;
+    line-height: 1;
+    color: var(--color-primary);
+    opacity: 0.1;
+    font-family: serif;
+}
+
+.projects-compact .takeaway-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  margin: 0 0 20px 0;
+}
+
+.projects-compact .takeaway-content {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+  margin: 0;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* View More Link */
+.projects-compact .view-more-static {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+  padding-bottom: 80px;
+}
+
+.projects-compact .view-all-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.projects-compact .view-all-link:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  gap: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .projects-compact .project-card-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+  
+  .projects-compact .project-right {
+    padding-left: 0;
+  }
+  
+  .projects-compact .project-desc {
+      max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-compact .projects-wrapper {
+      padding: 0 20px;
+  }
+  
+  .projects-compact .project-title {
+    font-size: 1.8rem;
+  }
+  
+  .projects-compact .project-card-inner {
+      padding: 24px;
+      gap: 32px;
+  }
+  
+  .projects-compact .takeaway-box {
+      padding: 24px;
+  }
+}

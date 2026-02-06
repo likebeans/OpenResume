@@ -6,52 +6,20 @@
     }
 }
 
-/* 极简小圆点 */
-.simple-cursor {
+/* 简单小圆点 */
+.cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    /* 纯白，配合 difference 模式 */
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    background: white;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
+    z-index: 100000;
     mix-blend-mode: difference;
-    /* 关键：反色模式，确保在任何背景下可见 */
-    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* 悬停状态：略微变大，提示可点击 */
-.simple-cursor.hovering {
-    width: 20px;
-    height: 20px;
-    mix-blend-mode: difference;
-    /* 保持反色 */
-}
-
-.simple-cursor.has-label {
-    width: 56px;
-    height: 56px;
-    background: rgba(26, 26, 26, 0.88);
-    mix-blend-mode: normal;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
-}
-
-.cursor-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
-    user-select: none;
-    line-height: 1;
+    opacity: 0;
+    will-change: transform;
 }

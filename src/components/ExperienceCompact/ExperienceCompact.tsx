@@ -27,13 +27,14 @@ const getExperiences = (t: (zh: string, en: string) => string): Experience[] => 
     ),
   },
   {
-    company: t('广州沃思网络科技有限公司', 'Guangzhou Wosi Network Technology'),
-    role: t('AI 算法工程师', 'AI Algorithm Engineer'),
-    period: t('2025.3 – 2025.5', '2025.3 – 2025.5'),
+    company: t('未来规划', 'Future Plan'),
+    role: t('AI / 大模型方向', 'AI / LLM Direction'),
+    period: t('待定', 'TBD'),
     description: t(
-      '参与企业 OA 系统智能化改造与 AI 浏览器模块研发。基于 LangGraph + FastMCP 构建智能体与中间层服务，并采用 Qwen2.5 + LoRA + DeepSpeed 高效微调大模型。',
-      'Participated in intelligent transformation of enterprise OA system and AI browser module R&D. Built agent services based on LangGraph + FastMCP, and fine-tuned LLM using Qwen2.5 + LoRA + DeepSpeed.'
+      '继续深耕大模型应用开发，专注 LLM、RAG、Agent 等方向，探索 AI 在更多行业的落地与产品化，期待加入有技术深度的团队。',
+      'Continue deepening LLM application development, focusing on RAG, Agent, and exploring AI productization across industries. Looking to join a technically-driven team.'
     ),
+    isFuture: true,
   },
 ];
 

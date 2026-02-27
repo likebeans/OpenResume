@@ -24,19 +24,18 @@ const H5Experience = () => {
       role: t('AI 应用开发工程师', 'AI Application Developer'),
       period: t('2025.5 – 至今', '2025.5 – Present'),
       description: t(
-        '主导开发智能问答系统，基于大模型技术实现药品知识库的智能检索；构建深度学习模型用于生产数据分析。',
-        'Led intelligent Q&A system development using LLM for pharmaceutical knowledge retrieval; built deep learning models for production data analysis.'
+        '负责公司 AI 应用的设计与开发，构建统一的企业级智能数据与 AI 平台。主导构建多智能体系统与企业级 RAG 检索平台。',
+        'Responsible for AI application design and development, building a unified enterprise-level intelligent data and AI platform.'
       ),
     },
     {
-      company: t('未来规划', 'Future Plan'),
-      role: t('AI / 大模型方向', 'AI / LLM Direction'),
-      period: t('待定', 'TBD'),
+      company: t('广州沃思网络科技有限公司', 'Guangzhou Wosi Network Technology'),
+      role: t('AI 算法工程师', 'AI Algorithm Engineer'),
+      period: t('2025.3 – 2025.5', '2025.3 – 2025.5'),
       description: t(
-        '继续深耕大模型应用开发，专注 LLM、RAG、Agent 等方向，期待加入有技术深度的团队。',
-        'Continue deepening LLM development, focusing on RAG and Agent. Looking to join a technically-driven team.'
+        '参与企业 OA 系统智能化改造与 AI 浏览器模块研发。基于 LangGraph + FastMCP 构建智能体，使用 LoRA 高效微调大模型。',
+        'Participated in intelligent transformation of enterprise OA system and AI browser module R&D.'
       ),
-      isFuture: true,
     },
   ];
 

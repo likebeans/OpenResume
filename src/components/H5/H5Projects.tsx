@@ -17,36 +17,46 @@ interface Project {
 const H5Projects = () => {
   const { t } = useLang();
 
-  const projects: Project[] = [
+const projects: Project[] = [
     {
-      title: 'Agent Service Toolkit',
-      role: 'Creator & Maintainer',
+      title: '企业级大模型与智能应用平台建设',
+      role: 'AI 应用开发工程师',
       description: t(
-        '全栈 AI Agent 服务工具包，基于 LangGraph 构建生产级代理服务。',
-        'Full-stack AI Agent toolkit built on LangGraph for production-grade agent services.'
+        '为公司药物研发等业务部门构建统一的企业级智能数据与 AI 平台。',
+        'Built enterprise-level AI platform for drug R&D departments.'
       ),
-      tags: ['LangGraph', 'FastAPI', 'Production'],
-      link: 'https://github.com/likebeans/agent-service-toolkit',
+      tags: ['LangGraph', 'RAG', 'SFT', 'RLHF', 'VLLM'],
+      link: 'https://github.com/likebeans',
     },
     {
-      title: 'Genesis LLM',
-      role: 'Solo Developer',
+      title: '企业级 RAG 检索与知识服务平台',
+      role: 'AI 应用开发工程师',
       description: t(
-        '从零构建大模型的完整工程流水线，手写 Transformer 每一行代码。',
-        'Complete LLM pipeline from scratch, hand-writing every line of Transformer code.'
+        '建设企业级统一检索与知识服务平台，作为公司 AI 应用的底层基础设施。',
+        'Built enterprise-level unified retrieval and knowledge platform.'
       ),
-      tags: ['PyTorch', 'Training', 'LLM'],
-      link: 'https://github.com/likebeans/Genesis-LLM',
+      tags: ['RAG', 'Vector DB', 'Security', 'BM25'],
+      link: 'https://github.com/likebeans',
     },
     {
-      title: 'Notes on LLMs',
-      role: 'Author',
+      title: '企业 OA 系统智能化改造',
+      role: 'AI 算法工程师',
       description: t(
-        'LLM、RAG、Agent 学习与实践笔记，系统化的知识沉淀。',
-        'Systematic knowledge base covering LLM, RAG, and Agent learning.'
+        '为公司 2,000+ 名员工构建统一的智能办公能力层。',
+        'Built intelligent office capabilities for 2000+ employees.'
       ),
-      tags: ['Knowledge', 'RAG', 'Docs'],
-      link: 'https://likebeans.github.io/notes-on-llms/',
+      tags: ['LangGraph', 'FastAPI', 'RAG-Fusion'],
+      link: 'https://github.com/likebeans',
+    },
+    {
+      title: 'AI 浏览器',
+      role: 'AI 算法工程师',
+      description: t(
+        '负责浏览器中所有 AI 模块研发，服务高校近万名师生。',
+        'Responsible for all AI modules in browser for 10000+ users.'
+      ),
+      tags: ['Qwen2.5', 'LoRA', 'DeepSpeed', 'VLLM'],
+      link: 'https://github.com/likebeans',
     },
   ];
 

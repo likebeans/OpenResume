@@ -20,43 +20,84 @@ interface Project {
 
 const getProjects = (t: (zh: string, en: string) => string): Project[] => [
   {
-    title: 'Agent Service Toolkit',
-    role: 'Creator & Core Maintainer',
-    description: t('全栈 AI Agent 服务工具包，基于 LangGraph 构建生产级代理服务，旨在解决 Agent 从 Demo 到 Production 的工程化难题。', 'Full-stack AI Agent service toolkit built on LangGraph for production-grade agent services, solving the engineering challenges from Demo to Production.'),
+    title: '企业级大模型与智能应用平台建设',
+    role: 'AI 应用开发工程师',
+    description: t(
+      '为公司药物研发等业务部门构建统一的企业级智能数据与 AI 平台，将传统数据平台能力与 AI 能力深度融合。',
+      'Built enterprise-level AI platform for drug R&D departments, integrating traditional data platform capabilities with AI.'
+    ),
     achievements: [
-      t('提供完整的 FastAPI 异步服务模板，支持 SSE 流式响应', 'Complete FastAPI async service template with SSE streaming support'),
-      t('内置会话持久化、工具调用追踪与结构化日志系统', 'Built-in session persistence, tool call tracing, and structured logging'),
-      t('大幅降低 Agent 应用的开发与部署门槛', 'Significantly lowered the barrier for Agent app development and deployment'),
+      t('完成数据层、模型层与应用层的分层设计，打通数据库、向量库与外部资源', 'Completed layered design of data, model, and application layers'),
+      t('构建多智能体系统，实现自动检索、推理分析与结构化报告生成闭环，效率提升近 10 倍', 'Built multi-agent system with automatic retrieval, reasoning, and structured report generation'),
+      t('完成医疗大模型从 CPT、SFT 到 RLHF 的全流程优化，基于 VLLM 部署上线', 'Completed full pipeline optimization from CPT, SFT to RLHF, deployed on VLLM'),
+      t('微调 BERT 实现意图识别，准确率 95%+，推理速度为 LLM 的 1/10', 'Fine-tuned BERT for intent recognition with 95%+ accuracy'),
     ],
-    takeaways: t('深刻理解了 Agent 工程化的核心痛点，掌握了如何构建高可用、可观测的 AI 服务架构。', 'Gained deep understanding of Agent engineering pain points and mastered building highly available, observable AI service architectures.'),
-    tags: ['LangGraph', 'FastAPI', 'Production'],
-    link: 'https://github.com/likebeans/agent-service-toolkit',
+    takeaways: t(
+      '深刻理解了企业级 AI 平台建设的核心挑战，掌握了从模型训练到部署的全流程能力。',
+      'Gained deep understanding of enterprise AI platform challenges, mastered full pipeline from training to deployment.'
+    ),
+    tags: ['LangGraph', 'RAG', 'SFT', 'RLHF', 'VLLM'],
+    link: 'https://github.com/likebeans',
   },
   {
-    title: 'Genesis LLM',
-    role: 'Solo Developer',
-    description: t('从零构建大模型的完整工程流水线，不依赖高级封装库，手写 Transformer 每一行代码，深入理解 LLM 核心原理。', 'Complete LLM engineering pipeline built from scratch, hand-writing every line of Transformer code without high-level libraries to deeply understand LLM core principles.'),
+    title: '企业级 RAG 检索与知识服务平台',
+    role: 'AI 应用开发工程师',
+    description: t(
+      '建设企业级统一检索与知识服务平台，作为公司内部 AI 应用的底层基础设施。',
+      'Built enterprise-level unified retrieval and knowledge platform as AI application infrastructure.'
+    ),
     achievements: [
-      t('实现了从 Tokenizer 训练到模型预训练（Pre-training）的全流程', 'Implemented the full pipeline from Tokenizer training to model pre-training'),
-      t('手写实现 Attention、LayerNorm 等核心组件', 'Hand-wrote Attention, LayerNorm, and other core components'),
-      t('构建了可视化训练监控与评估脚本', 'Built visual training monitoring and evaluation scripts'),
+      t('设计多租户检索服务架构，实现租户隔离与精细化权限控制', 'Designed multi-tenant retrieval architecture with isolation and fine-grained access control'),
+      t('统一封装 OpenAI 兼容接口，支持 Embeddings 与 Chat Completions 调用', 'Encapsulated OpenAI-compatible interfaces'),
+      t('支持 Dense、BM25、Hybrid 等多种检索模式', 'Supported Dense, BM25, Hybrid retrieval modes'),
+      t('建立企业级语义检索安全机制', 'Established enterprise semantic retrieval security mechanism'),
     ],
-    takeaways: t('"What I cannot create, I do not understand." 通过手搓模型，对 Transformer 架构细节有了像素级的认知。', '"What I cannot create, I do not understand." Building the model by hand gave me pixel-level cognition of the Transformer architecture.'),
-    tags: ['PyTorch', 'Training', 'LLM'],
-    link: 'https://github.com/likebeans/Genesis-LLM',
+    takeaways: t(
+      '掌握了企业级知识检索平台的建设方法，理解了数据安全与权限控制的重要性。',
+      'Mastered enterprise knowledge retrieval platform construction, understood data security and access control.'
+    ),
+    tags: ['RAG', 'Vector DB', 'Security', 'BM25'],
+    link: 'https://github.com/likebeans',
   },
   {
-    title: 'Notes on LLMs',
-    role: 'Author',
-    description: t('LLM、RAG、Agent 学习与实践笔记，系统化的知识沉淀，涵盖了从理论基础到工程实践的广泛内容。', 'Systematic knowledge base covering LLM, RAG, and Agent learning and practice, from theoretical foundations to engineering implementation.'),
+    title: '企业 OA 系统智能化改造',
+    role: 'AI 算法工程师',
+    description: t(
+      '参与推动企业内部 OA 系统全面智能化升级，为公司 2,000+ 名员工构建统一的智能办公能力层。',
+      'Participated in enterprise OA system intelligent upgrade for 2000+ employees.'
+    ),
     achievements: [
-      t('梳理了 RAG 的高级检索策略与优化范式', 'Organized advanced RAG retrieval strategies and optimization patterns'),
-      t('总结了 Agent 设计模式与主流框架对比', 'Summarized Agent design patterns and mainstream framework comparisons'),
-      t('累计输出 50k+ 字的技术笔记', 'Produced 50k+ words of technical notes'),
+      t('基于 LangGraph + FastAPI + FastMCP 构建智能体与中间层服务', 'Built agent and middleware services based on LangGraph + FastAPI + FastMCP'),
+      t('搭建标准化知识库处理流程，覆盖数据采集到检索全链路', 'Built standardized knowledge base processing pipeline'),
+      t('基于 MinerU 实现端到端文档解析', 'Implemented end-to-end document parsing with MinerU'),
+      t('表单处理时间由 2-3 分钟降至约 10 秒', 'Reduced form processing time from 2-3 minutes to ~10 seconds'),
     ],
-    takeaways: t('写作是最好的学习。通过系统化输出，构建了自己的 LLM 知识体系，也帮助了更多初学者。', 'Writing is the best way to learn. Systematic output built my own LLM knowledge system and helped many beginners.'),
-    tags: ['Knowledge', 'RAG', 'Docs'],
-    link: 'https://likebeans.github.io/notes-on-llms/',
+    takeaways: t(
+      '深入理解了企业办公场景的 AI 改造痛点，积累了丰富的 RAG 工程实践经验。',
+      'Deep understanding of enterprise office AI transformation challenges, accumulated rich RAG engineering experience.'
+    ),
+    tags: ['LangGraph', 'FastAPI', 'RAG-Fusion', 'HyDE'],
+    link: 'https://github.com/likebeans',
+  },
+  {
+    title: 'AI 浏览器',
+    role: 'AI 算法工程师',
+    description: t(
+      '负责浏览器中所有 AI 模块研发，包括主界面 AI 搜索、智能问数系统、模型微调与部署等。',
+      'Responsible for all AI module development in browser, including AI search, Q&A system, model fine-tuning and deployment.'
+    ),
+    achievements: [
+      t('设计并实现 AI 搜索与智能问数功能', 'Designed and implemented AI search and intelligent Q&A'),
+      t('选用 Qwen2.5，采用 LoRA + DeepSpeed 进行高效分布式微调', 'Used Qwen2.5 with LoRA + DeepSpeed for distributed fine-tuning'),
+      t('基于 VLLM 框架优化推理与私有化部署', 'Optimized inference and private deployment based on VLLM'),
+      t('负责大模型 benchmark、并发压测与 RAG 评估', 'Responsible for LLM benchmark, stress testing, and RAG evaluation'),
+    ],
+    takeaways: t(
+      '掌握了从模型选型到部署的完整流程，积累了丰富的大模型工程化经验。',
+      'Mastered complete flow from model selection to deployment, accumulated rich LLM engineering experience.'
+    ),
+    tags: ['Qwen2.5', 'LoRA', 'DeepSpeed', 'VLLM'],
+    link: 'https://github.com/likebeans',
   },
 ];
 

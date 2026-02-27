@@ -11,9 +11,10 @@ const { Title } = Typography;
 interface Project {
   title: string;
   role: string;
+  period: string;
   description: string;
   achievements: string[];
-  takeaways: string;
+  outcomes: string[];
   tags: string[];
   link: string;
 }
@@ -21,82 +22,174 @@ interface Project {
 const getProjects = (t: (zh: string, en: string) => string): Project[] => [
   {
     title: '企业级大模型与智能应用平台建设',
-    role: 'AI 应用开发工程师',
+    role: t('AI 应用开发工程师', 'AI Application Developer'),
+    period: '2025.08 – 至今',
     description: t(
-      '为公司药物研发等业务部门构建统一的企业级智能数据与 AI 平台，将传统数据平台能力与 AI 能力深度融合。',
-      'Built enterprise-level AI platform for drug R&D departments, integrating traditional data platform capabilities with AI.'
+      '为公司药物研发等业务部门构建统一的企业级智能数据与 AI 平台，形成集数据管理、业务 CRUD、模型服务、多智能体调度与知识检索于一体的综合智能底座。',
+      'Built a unified enterprise AI platform for drug R&D teams, integrating data management, CRUD workflows, model services, multi-agent orchestration, and knowledge retrieval.'
     ),
     achievements: [
-      t('完成数据层、模型层与应用层的分层设计，打通数据库、向量库与外部资源', 'Completed layered design of data, model, and application layers'),
-      t('构建多智能体系统，实现自动检索、推理分析与结构化报告生成闭环，效率提升近 10 倍', 'Built multi-agent system with automatic retrieval, reasoning, and structured report generation'),
-      t('完成医疗大模型从 CPT、SFT 到 RLHF 的全流程优化，基于 VLLM 部署上线', 'Completed full pipeline optimization from CPT, SFT to RLHF, deployed on VLLM'),
-      t('微调 BERT 实现意图识别，准确率 95%+，推理速度为 LLM 的 1/10', 'Fine-tuned BERT for intent recognition with 95%+ accuracy'),
+      t(
+        '完成数据层、模型层、应用层分层架构设计，打通数据库、向量库与外部资源，统一结构化与非结构化数据检索调用。',
+        'Designed layered architecture across data/model/application layers and unified retrieval over structured and unstructured data.'
+      ),
+      t(
+        '构建多智能体系统（本地库 + 企业知识库 + 网络资源），实现自动检索、推理分析与结构化报告生成闭环。',
+        'Built a multi-agent system over local DB, enterprise KB, and web resources for end-to-end retrieval, reasoning, and structured reporting.'
+      ),
+      t(
+        '完成医疗大模型 CPT/SFT/RLHF 全流程优化，结合 PEFT + Transformers + verl（DRPO）并通过 C-Eval、MMLU 评测，最终基于 VLLM 部署上线。',
+        'Optimized medical LLM pipeline (CPT/SFT/RLHF) with PEFT, Transformers, and DRPO alignment, evaluated by C-Eval/MMLU, then deployed on VLLM.'
+      ),
+      t(
+        '微调 BERT 轻量模型实现高频意图识别（95%+），推理速度达到 LLM 的 1/10，并落地轻重模型分层路由机制。',
+        'Fine-tuned lightweight BERT for 95%+ intent accuracy with 10x faster inference than LLM and productionized a hybrid routing strategy.'
+      ),
     ],
-    takeaways: t(
-      '深刻理解了企业级 AI 平台建设的核心挑战，掌握了从模型训练到部署的全流程能力。',
-      'Gained deep understanding of enterprise AI platform challenges, mastered full pipeline from training to deployment.'
-    ),
-    tags: ['LangGraph', 'RAG', 'SFT', 'RLHF', 'VLLM'],
+    outcomes: [
+      t(
+        '完成企业级智能数据与 AI 平台建设，实现数据、模型、知识能力统一整合与标准化输出，支持多业务部门快速接入。',
+        'Delivered an enterprise AI foundation that standardized data/model/knowledge capabilities and enabled fast cross-team onboarding.'
+      ),
+      t(
+        '报告生成效率提升近 10 倍（半月 → 30 分钟），显著降低人工成本。',
+        'Improved report generation efficiency by nearly 10x (half month to 30 minutes), cutting manual effort.'
+      ),
+      t(
+        '沉淀统一模型服务、RAG 与多智能体框架，形成可持续扩展的长期基础设施。',
+        'Standardized reusable model serving, RAG, and multi-agent framework as long-term scalable infrastructure.'
+      ),
+    ],
+    tags: ['Platform', 'Multi-Agent', 'PEFT', 'DRPO', 'VLLM', 'BERT'],
     link: 'https://github.com/likebeans',
   },
   {
     title: '企业级 RAG 检索与知识服务平台',
-    role: 'AI 应用开发工程师',
+    role: t('AI 应用开发工程师', 'AI Application Developer'),
+    period: '2025.09 – 至今',
     description: t(
-      '建设企业级统一检索与知识服务平台，作为公司内部 AI 应用的底层基础设施。',
-      'Built enterprise-level unified retrieval and knowledge platform as AI application infrastructure.'
+      '建设企业级统一检索与知识服务平台，作为公司内部 AI 应用底层基础设施，为各类智能系统提供标准化 RAG 能力与权限安全控制。',
+      'Built an enterprise retrieval and knowledge platform as shared infrastructure for internal AI applications, with standardized RAG and permission controls.'
     ),
     achievements: [
-      t('设计多租户检索服务架构，实现租户隔离与精细化权限控制', 'Designed multi-tenant retrieval architecture with isolation and fine-grained access control'),
-      t('统一封装 OpenAI 兼容接口，支持 Embeddings 与 Chat Completions 调用', 'Encapsulated OpenAI-compatible interfaces'),
-      t('支持 Dense、BM25、Hybrid 等多种检索模式', 'Supported Dense, BM25, Hybrid retrieval modes'),
-      t('建立企业级语义检索安全机制', 'Established enterprise semantic retrieval security mechanism'),
+      t(
+        '设计并落地多租户检索架构，实现租户隔离、配额管理与精细化权限控制，构建“操作权限 + 知识库范围 + 文档 ACL”三层权限模型。',
+        'Implemented multi-tenant retrieval with isolation, quota controls, and a three-layer permission model: operation, knowledge scope, and document ACL.'
+      ),
+      t(
+        '在检索阶段引入 Security Trimming，确保语义检索场景下数据安全与合规访问。',
+        'Introduced security trimming in retrieval stage to enforce compliant and secure semantic access.'
+      ),
+      t(
+        '统一封装 OpenAI 兼容接口，支持 Embeddings 与 Chat Completions，配套标准化知识入库处理流程。',
+        'Built OpenAI-compatible API layer for embeddings/chat and standardized knowledge ingestion workflows.'
+      ),
+      t(
+        '支持 Dense、BM25、Hybrid 等检索模式与增强策略，并完善可观测与审计机制保障生产稳定性。',
+        'Supported Dense/BM25/Hybrid retrieval plus enhancement strategies, with observability and auditing for production reliability.'
+      ),
     ],
-    takeaways: t(
-      '掌握了企业级知识检索平台的建设方法，理解了数据安全与权限控制的重要性。',
-      'Mastered enterprise knowledge retrieval platform construction, understood data security and access control.'
-    ),
-    tags: ['RAG', 'Vector DB', 'Security', 'BM25'],
+    outcomes: [
+      t(
+        '形成公司统一知识检索与 RAG 服务底座，支撑多个 AI 应用稳定运行并实现跨系统复用。',
+        'Established a unified company-wide RAG service foundation reused across multiple AI systems.'
+      ),
+      t(
+        '建立企业级语义检索安全机制，解决大模型接入场景下的数据权限隔离问题。',
+        'Solved enterprise data isolation risks in LLM scenarios through production-grade semantic retrieval security.'
+      ),
+      t(
+        '显著降低各业务线重复建设成本，推动 AI 能力从单点应用升级为可规模化复用的基础设施。',
+        'Reduced duplicated build cost and upgraded AI capabilities from isolated use-cases to scalable infrastructure.'
+      ),
+    ],
+    tags: ['RAG', 'BM25', 'Hybrid', 'ACL', 'Security', 'OpenAI API'],
     link: 'https://github.com/likebeans',
   },
   {
     title: '企业 OA 系统智能化改造',
-    role: 'AI 算法工程师',
+    role: t('AI 算法工程师', 'AI Algorithm Engineer'),
+    period: '2025.05 – 2025.08',
     description: t(
-      '参与推动企业内部 OA 系统全面智能化升级，为公司 2,000+ 名员工构建统一的智能办公能力层。',
-      'Participated in enterprise OA system intelligent upgrade for 2000+ employees.'
+      '参与推动企业内部 OA 系统智能化升级，为 2,000+ 员工构建统一智能办公能力层，通过自然语言重构请假、外勤、会议室预定等高频流程。',
+      'Led OA intelligence upgrade for 2,000+ employees, rebuilding high-frequency workflows like leave, field work, and meeting booking with natural language interaction.'
     ),
     achievements: [
-      t('基于 LangGraph + FastAPI + FastMCP 构建智能体与中间层服务', 'Built agent and middleware services based on LangGraph + FastAPI + FastMCP'),
-      t('搭建标准化知识库处理流程，覆盖数据采集到检索全链路', 'Built standardized knowledge base processing pipeline'),
-      t('基于 MinerU 实现端到端文档解析', 'Implemented end-to-end document parsing with MinerU'),
-      t('表单处理时间由 2-3 分钟降至约 10 秒', 'Reduced form processing time from 2-3 minutes to ~10 seconds'),
+      t(
+        '基于 LangGraph + FastAPI + FastMCP 构建 OA 智能体与 MCP 服务，打通待办、排班等工具链并支持本地/网络检索与深度思考。',
+        'Built OA agents and MCP services with LangGraph, FastAPI, and FastMCP, integrating workflow tools and local/web retrieval.'
+      ),
+      t(
+        '构建自然语言填单系统，实现意图识别与字段自动映射，自动触发流程。',
+        'Implemented natural-language form filling with intent recognition, field mapping, and automatic process triggering.'
+      ),
+      t(
+        '搭建标准化知识库链路（采集、预处理、分块、嵌入、检索），并基于 MinerU 完成版面分析、OCR、公式识别等端到端解析。',
+        'Built a full knowledge pipeline and used MinerU for end-to-end parsing including layout analysis, OCR, and formula recognition.'
+      ),
+      t(
+        '结合 RAG-Fusion、HyDE 优化检索效果，显著提升问答召回率与准确率。',
+        'Improved retrieval quality with RAG-Fusion and HyDE, significantly boosting answer recall and accuracy.'
+      ),
     ],
-    takeaways: t(
-      '深入理解了企业办公场景的 AI 改造痛点，积累了丰富的 RAG 工程实践经验。',
-      'Deep understanding of enterprise office AI transformation challenges, accumulated rich RAG engineering experience.'
-    ),
-    tags: ['LangGraph', 'FastAPI', 'RAG-Fusion', 'HyDE'],
+    outcomes: [
+      t(
+        '表单处理时间由 2–3 分钟缩短至约 10 秒，大幅提升员工日常 OA 操作效率。',
+        'Reduced form processing time from 2–3 minutes to around 10 seconds, sharply improving daily OA efficiency.'
+      ),
+      t(
+        '构建的知识库成为公司内部信息服务与文化传递核心模块。',
+        'Delivered a knowledge base that became a core internal information and culture distribution module.'
+      ),
+      t(
+        '实现传统业务流程与大模型能力深度融合，形成可复制的智能办公落地方案。',
+        'Deeply integrated traditional OA workflows with LLM capabilities into a reusable intelligent-office blueprint.'
+      ),
+    ],
+    tags: ['LangGraph', 'FastAPI', 'FastMCP', 'MinerU', 'RAG-Fusion', 'HyDE'],
     link: 'https://github.com/likebeans',
   },
   {
     title: 'AI 浏览器',
-    role: 'AI 算法工程师',
+    role: t('AI 算法工程师', 'AI Algorithm Engineer'),
+    period: '2025.03 – 2025.05',
     description: t(
-      '负责浏览器中所有 AI 模块研发，包括主界面 AI 搜索、智能问数系统、模型微调与部署等。',
-      'Responsible for all AI module development in browser, including AI search, Q&A system, model fine-tuning and deployment.'
+      '负责浏览器全部 AI 模块研发，覆盖主界面 AI 搜索、智能问数、模型微调与部署，项目服务高校近万名师生并提供十余项 AI 功能。',
+      'Owned all AI modules in an AI browser, covering AI search, intelligent Q&A, model fine-tuning and deployment for nearly 10,000 campus users.'
     ),
     achievements: [
-      t('设计并实现 AI 搜索与智能问数功能', 'Designed and implemented AI search and intelligent Q&A'),
-      t('选用 Qwen2.5，采用 LoRA + DeepSpeed 进行高效分布式微调', 'Used Qwen2.5 with LoRA + DeepSpeed for distributed fine-tuning'),
-      t('基于 VLLM 框架优化推理与私有化部署', 'Optimized inference and private deployment based on VLLM'),
-      t('负责大模型 benchmark、并发压测与 RAG 评估', 'Responsible for LLM benchmark, stress testing, and RAG evaluation'),
+      t(
+        '设计并实现 AI 搜索与智能问数系统，提升师生信息获取效率与交互体验。',
+        'Designed and implemented AI search and intelligent Q&A to improve user efficiency and interaction quality.'
+      ),
+      t(
+        '主导模型选型与微调部署：选用 Qwen2.5，基于校内新闻语料完成清洗与预处理，采用 LoRA + DeepSpeed 高效分布式微调。',
+        'Led model selection and fine-tuning with Qwen2.5, campus-news corpus processing, and LoRA + DeepSpeed distributed training.'
+      ),
+      t(
+        '基于 VLLM 完成推理优化与私有化部署，保证服务稳定可用。',
+        'Optimized inference and private deployment via VLLM for stable production service.'
+      ),
+      t(
+        '负责 benchmark、并发压测与 RAG 评估，监控 latency、throughput、TTFT，使用 Locust + RAGas + LLM-as-a-Judge 持续优化效果。',
+        'Owned benchmark, stress testing, and RAG evaluation with latency/throughput/TTFT metrics using Locust, RAGas, and LLM-as-a-Judge.'
+      ),
     ],
-    takeaways: t(
-      '掌握了从模型选型到部署的完整流程，积累了丰富的大模型工程化经验。',
-      'Mastered complete flow from model selection to deployment, accumulated rich LLM engineering experience.'
-    ),
-    tags: ['Qwen2.5', 'LoRA', 'DeepSpeed', 'VLLM'],
+    outcomes: [
+      t(
+        '支撑高校近万名师生使用，落地十余项 AI 功能（智能体 + 工作流）。',
+        'Served nearly 10,000 students and teachers with 10+ AI features (agents + workflows).'
+      ),
+      t(
+        '沉淀从模型选型、训练、部署到评估的全链路工程化能力。',
+        'Built an end-to-end engineering workflow from model selection and training to deployment and evaluation.'
+      ),
+      t(
+        '建立可量化性能评估体系，为后续模型迭代与容量规划提供依据。',
+        'Established measurable performance evaluation for future model iteration and capacity planning.'
+      ),
+    ],
+    tags: ['Qwen2.5', 'LoRA', 'DeepSpeed', 'VLLM', 'Locust', 'RAGas'],
     link: 'https://github.com/likebeans',
   },
 ];
@@ -140,7 +233,10 @@ const ProjectCard = ({ project, index, total }: { project: Project; index: numbe
                     </a>
                 </h3>
                 </div>
-                <span className="project-role">{project.role}</span>
+                <div className="project-meta-row">
+                  <span className="project-role">{project.role}</span>
+                  <span className="project-period">{project.period}</span>
+                </div>
             </div>
             
             <p className="project-desc">{project.description}</p>
@@ -161,8 +257,12 @@ const ProjectCard = ({ project, index, total }: { project: Project; index: numbe
           {/* Right Column: Takeaways */}
           <div className="project-right">
             <div className="takeaway-box">
-              <h4 className="takeaway-title">{t('收获与思考', 'Takeaways')}</h4>
-              <p className="takeaway-content">{project.takeaways}</p>
+              <h4 className="takeaway-title">{t('项目成效', 'Project Impact')}</h4>
+              <ul className="takeaway-list">
+                {project.outcomes.map((item, idx) => (
+                  <li key={`${project.title}-outcome-${idx}`}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
